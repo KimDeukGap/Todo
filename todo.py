@@ -13,6 +13,11 @@ while True:
         t = input("추가할 할 일: ")
         todos.append(t)
         json.dump(todos, open(FILE, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
-    
+    elif cmd == "3":
+        idx = int(input("완료할 번호: ")) - 1
+        if 0 <= idx < len(todos):
+            removed = todos.pop(idx)
+            json.dump(todos, open(FILE, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+            print(f"'{removed}' 완료 처리되었습니다.")
     elif cmd == "4":
         break
